@@ -1,0 +1,16 @@
+1. use JTR rules :
+   > sudo gedit /etc/john/john.conf 
+
+2. use wordlist with JTR rules :    
+   > sudo john --wordlist=/media/black/more/oswp/password.txt --rules --stdout 
+
+3. use wordlist with JTR rules + aircrack-ng handshik :
+   > sudo john --wordlist=/media/black/more/oswp/password.txt --rules --stdout | aircrack-ng -e essid  file.cap -w -    
+
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+4. use wordlist with hashcat rules + aircrack-ng :
+   > hashcat -a 0 --stdout wordlist.txt -r rule.txt | aircrack-ng -e essid file.cap -w -
+   
+5. use crunch with pattern -t + aircrack-ng :
+   > sudo crunch 11 11 -t password%%% | aircrack-ng -e essid file.cap -w -   
